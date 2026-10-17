@@ -32,6 +32,7 @@ private const val FREE = 0
 private const val NO_AD_UNLOCKS = 0
 private const val UNLIMITED = Int.MAX_VALUE
 
+private const val VIP_ACCESS_RESPONSE = "Lcom/transsion/shorttv/bean/VipAccessResponseBean;"
 private const val MEMBER_CHECK_RESULT = "Lcom/transsion/memberapi/MemberCheckResult;"
 private const val MEMBER_INFO = "Lcom/transsion/memberapi/MemberInfo;"
 private const val MEMBER_BRIEF_INFO = "Lcom/transsion/member/bean/MemberBriefInfo;"
@@ -163,6 +164,7 @@ val allInOnePatch = resourcePatch(
             NEED_PAID_HOLDERS.forEach { method(it, "getNeedPaid").returnEarly(FREE) }
 
             method(PLAY_MODE, PLAY_MODE_IS_STREAM).returnEarly(true)
+            method(VIP_ACCESS_RESPONSE, "getHasAccess").returnEarly(true)
 
             method(AD_SETTINGS, AD_SETTINGS_ADS_OFF).returnEarly(true)
             method(AD_SCENE_CONFIG, AD_SCENE_TIMEOUT).returnEarly(0)
