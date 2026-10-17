@@ -33,6 +33,7 @@ private const val NO_AD_UNLOCKS = 0
 private const val UNLIMITED = Int.MAX_VALUE
 
 private const val MEMBER_CHECK_RESULT = "Lcom/transsion/memberapi/MemberCheckResult;"
+private const val VIP_ACCESS_RESPONSE = "Lcom/transsion/shorttv/bean/VipAccessResponseBean;"
 private const val MEMBER_INFO = "Lcom/transsion/memberapi/MemberInfo;"
 private const val MEMBER_BRIEF_INFO = "Lcom/transsion/member/bean/MemberBriefInfo;"
 private const val MEMBER_PROVIDER = "Lcom/transsion/member/MemberProvider;"
@@ -156,6 +157,7 @@ val allInOnePatch = resourcePatch(
             method(MEMBER_RESOLUTION, "isUnlock").returnBoxed(true)
             method(MEMBER_RESOLUTION, "getVipResolutionTip").returnBoxed(false)
             method(OBSERVE_LOGIN_ACTION, "onLogout").returnEarly()
+            method(VIP_ACCESS_RESPONSE, "getHasAccess").returnEarly(true)
             methodWithString(MEMBER_LOGIN_HELPER, MEMBER_NOT_LOGGED_IN_LOG).returnEarly(false)
 
             REQUIRE_MEMBER_TYPE_HOLDERS.forEach { method(it, "getRequireMemberType").returnNull() }
